@@ -7,12 +7,12 @@ export const Footer = () => {
             <h3>
               fin<span className="text-primary">co.</span>
             </h3>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+            <p>Sofia Street, Sofia, Bulgaria</p>
             <p>
-              <a href="#">digigram@mail.com</a>
+              <a href="#">info@finco.io</a>
             </p>
             <p>
-              <a href="#">+00 1122 3344 5566</a>
+              <a href="#">+359 999 334 55</a>
             </p>
           </div>
           <div className="col-lg-3 py-3">

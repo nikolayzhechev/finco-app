@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 export const Home = () => {
   return (
     <main>
@@ -11,9 +13,9 @@ export const Home = () => {
               <p className="text-lg mb-5">
                 Get access to powerfull financial tools and manage your wallet and expenses
               </p>
-              <a href="/" className="btn btn-outline border text-secondary">
+              <Link to={"/about"} className="btn btn-outline border text-secondary">
                 More Info
-              </a>
+              </Link>
               <a href="/" className="btn btn-primary btn-split ml-2">
                 Sign Up{" "}
                 <div className="fab">
@@ -38,8 +40,8 @@ export const Home = () => {
                   <img src="./images/icon_pattern.svg" alt="" />
                 </div>
                 <div>
-                  <h5>Provide financial advice by our advisor</h5>
-                  <p>Copywrite, blogpublic realations content translation.</p>
+                  <h5>All in One Place.</h5>
+                  <p>All your accounts are linked, cash accounts, credit cards, investments, and bills.</p>
                 </div>
               </div>
             </div>
@@ -49,8 +51,8 @@ export const Home = () => {
                   <img src="./images/icon_pattern.svg" alt="" />
                 </div>
                 <div>
-                  <h5>Complete solutions for global organisations</h5>
-                  <p>Copywrite, blogpublic realations content translation.</p>
+                  <h5>Track What You Spend</h5>
+                  <p>Plan and use out of the box solutions to highlight and improve what you spend.</p>
                 </div>
               </div>
             </div>
@@ -60,8 +62,8 @@ export const Home = () => {
                   <img src="./images/icon_pattern.svg" alt="" />
                 </div>
                 <div>
-                  <h5>Provide financial advice by our advisor</h5>
-                  <p>Copywrite, blogpublic realations content translation.</p>
+                  <h5>Get Financial Advice by our Advisor</h5>
+                  <p>Expense calculator and tracker with monthly consulations.</p>
                 </div>
               </div>
             </div>
@@ -80,14 +82,12 @@ export const Home = () => {
             </div>
             <div className="col-lg-6 py-3 wow fadeInRight">
               <h2 className="title-section">
-                We're <span className="marked">Dynamic</span> Team of Creatives
-                People
+                Keep <span className="marked">More</span> of What you Earn
               </h2>
               <div className="divider" />
               <p>
-                We provide marketing services to startups &amp; small business
-                to looking for partner for their digital media, design &amp; dev
-                lead generation &amp; communication.
+                Track income and expenses, manage bills, send invoices, track mileage, and more on the go from any device.
+                Powerful invoicing with custom reminders, tracking, and direct deposit
               </p>
               <div className="img-place mb-3">
                 <img src="./images/testi_image.png" alt="" />
@@ -108,21 +108,21 @@ export const Home = () => {
         <div className="container">
           <div className="row align-items-center text-center">
             <div className="col-lg-4">
-              <p>Total Invest</p>
+              <p>Average Income Calculated</p>
               <h2>
-                $<span className="number" data-number={816278} />
+                $<span className="number" data-number={22278} />
               </h2>
             </div>
             <div className="col-lg-4">
-              <p>Yearly Revenue</p>
+              <p>Avarage Savings</p>
               <h2>
-                $<span className="number" data-number={216422} />
+                $<span className="number" data-number={5422} />
               </h2>
             </div>
             <div className="col-lg-4">
-              <p>Growth Ration</p>
+              <p>Total Savings</p>
               <h2>
-                <span className="number" data-number={73} />%
+                <span className="number" data-number={52} />%
               </h2>
             </div>
           </div>
@@ -135,14 +135,11 @@ export const Home = () => {
           <div className="row">
             <div className="col-lg-6 py-3 wow fadeInLeft">
               <h2 className="title-section">
-                We're <span className="marked">ready to</span> Serve you with
-                best
+                <span className="marked">Track </span> Income &amp; Expenses
               </h2>
               <div className="divider" />
               <p className="mb-5">
-                We provide marketing services to startups &amp; small business
-                to looking for partner for their digital media, design &amp; dev
-                lead generation &amp; communication.
+                Know where your money is going and automatically sort transactions. Get advanced but easy to use dashboard charts and details. 
               </p>
               <a href="/" className="btn btn-primary">
                 More Details
@@ -175,38 +172,38 @@ export const Home = () => {
               <div className="display-3">
                 <span className="mai-shapes" />
               </div>
-              <h5>High Performance</h5>
+              <h5>Individuals</h5>
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Laborum, sit.
+                Experience tailored to individual needs with mostly free of charge.
               </p>
             </div>
             <div className="col-lg-4 py-3 wow fadeInUp">
               <div className="display-3">
                 <span className="mai-shapes" />
               </div>
-              <h5>Friendly Prices</h5>
+              <h5>Businesses</h5>
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Laborum, sit.
+                With more than 150k companies already using finco. we strive for business success.
               </p>
             </div>
             <div className="col-lg-4 py-3 wow fadeInUp">
               <div className="display-3">
                 <span className="mai-shapes" />
               </div>
-              <h5>No time-confusing</h5>
+              <h5>Partners and developers</h5>
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Laborum, sit.
+                Excellent partner network and outstanding payment solutions.
               </p>
             </div>
           </div>
         </div>{" "}
         {/* .container */}
       </div>{" "}
+
+    {/* REMOVED/ OPTIONAL SECTION */}
+
       {/* .page-section */}
-      <div className="page-section border-top">
+      {/* <div className="page-section border-top">
         <div className="container">
           <div className="text-center wow fadeInUp">
             <h2 className="title-section">Pricing Plan</h2>
@@ -223,9 +220,9 @@ export const Home = () => {
                 </div>
                 <div className="body py-3">
                   <div className="price-tag">
-                    <span className="currency">$</span>
-                    <h2 className="display-4">30</h2>
-                    <span className="period">/monthly</span>
+                    <span className="currency"></span>
+                    <h2 className="display-4">Free</h2>
+                    <span className="period"></span>
                   </div>
                   <div className="price-info">
                     <p>Choose the plan that right for you</p>
@@ -292,9 +289,9 @@ export const Home = () => {
           </div>
         </div>{" "}
         {/* .container */}
-      </div>{" "}
+      {/* </div>{" "} */}
       {/* .page-section */}
-      <div className="page-section bg-light">
+      {/* <div className="page-section bg-light">
         <div className="container">
           <div className="owl-carousel wow fadeInUp" id="testimonials">
             <div className="item">
@@ -344,77 +341,34 @@ export const Home = () => {
           </div>
         </div>{" "}
         {/* .container */}
-      </div>{" "}
+      {/* </div>{" "} */}
       {/* .page-section */}
+
       <div className="page-section">
         <div className="container">
           <div className="row align-items-center">
             <div className="col-lg-6 py-3 wow fadeInUp">
-              <h2 className="title-section">Get in Touch</h2>
+              <h2 className="title-section">fin<span className="text-primary">co.</span></h2>
               <div className="divider" />
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                <br /> Laborum ratione autem quidem veritatis!
+                The finance partner
+                <br /> that let's you focus on the important.
               </p>
-              <ul className="contact-list">
-                <li>
-                  <div className="icon">
-                    <span className="mai-map" />
-                  </div>
-                  <div className="content">123 Fake Street, New York, USA</div>
-                </li>
-                <li>
-                  <div className="icon">
-                    <span className="mai-mail" />
-                  </div>
-                  <div className="content">
-                    <a href="#">info@digigram.com</a>
-                  </div>
-                </li>
-                <li>
-                  <div className="icon">
-                    <span className="mai-phone-portrait" />
-                  </div>
-                  <div className="content">
-                    <a href="#">+00 1122 3344 55</a>
-                  </div>
-                </li>
-              </ul>
             </div>
             <div className="col-lg-6 py-3 wow fadeInUp">
-              <div className="subhead">Contact Us</div>
-              <h2 className="title-section">Drop Us a Line</h2>
+              <div className="subhead">Register for free</div>
+              <h2 className="title-section">Start Saving Today</h2>
               <div className="divider" />
-              <form action="#">
-                <div className="py-2">
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Full name"
-                  />
-                </div>
-                <div className="py-2">
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Email"
-                  />
-                </div>
-                <div className="py-2">
-                  <textarea
-                    rows={6}
-                    className="form-control"
-                    placeholder="Enter message"
-                    defaultValue={""}
-                  />
-                </div>
-                <button
-                  type="submit"
-                  className="btn btn-primary rounded-pill mt-4"
-                >
-                  Send Message
-                </button>
-              </form>
+
+              <Link to={"/register"}>
+                  <button
+                    type="submit"
+                    className="btn btn-primary rounded-pill mt-4"
+                  >
+                      Sign Up
+                  </button>
+                </Link>
+
             </div>
           </div>
         </div>{" "}
@@ -539,12 +493,12 @@ export const Home = () => {
             </div>
           </div>
           <div className="text-center">
-            <a
-              href="blog.html"
+            <Link
+              to={"/news"}
               className="btn btn-outline-primary rounded-pill"
             >
               Discover More
-            </a>
+            </Link>
           </div>
         </div>{" "}
         {/* .container */}

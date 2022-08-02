@@ -11,21 +11,14 @@ export const About = () => {
             </div>
             <div className="col-lg-6 py-3 pr-lg-5">
               <h2 className="title-section">
-                We're <span className="marked">Dynamic</span> Team of Creatives
+                A <span className="marked">Dynamic</span> Team of
                 People
               </h2>
               <div className="divider" />
               <p>
-                We provide marketing services to startups &amp; small business
-                to looking for partner for their digital media, design &amp; dev
-                lead generation &amp; communication.
+                Creating apps which are based on research and specific criteria aimed to
+                solve the needs and problems of individuals and our customers.
               </p>
-              <a href="#" className="btn btn-primary">
-                More Details
-              </a>
-              <a href="#" className="btn btn-outline border ml-2">
-                Success Stories
-              </a>
             </div>
           </div>
         </div>{" "}
@@ -36,15 +29,15 @@ export const About = () => {
         <div className="container">
           <div className="row align-items-center text-center">
             <div className="col-lg-4">
-              <p>Total Invest</p>
+              <p>Investments in finco.</p>
               <h2>
-                $<span className="number" data-number={816278} />
+                $<span className="number" data-number={1816278} />
               </h2>
             </div>
             <div className="col-lg-4">
               <p>Yearly Revenue</p>
               <h2>
-                $<span className="number" data-number={216422} />
+                $<span className="number" data-number={916422} />
               </h2>
             </div>
             <div className="col-lg-4">
@@ -58,58 +51,6 @@ export const About = () => {
         {/* .container */}
       </div>{" "}
       {/* .page-section */}
-      {/* Testimonials */}
-      <div className="page-section bg-light">
-        <div className="container">
-          <div className="owl-carousel" id="testimonials">
-            <div className="item">
-              <div className="row align-items-center">
-                <div className="col-md-6 py-3">
-                  <div className="testi-image">
-                    <img src="./images/person/person_1.jpg" alt />
-                  </div>
-                </div>
-                <div className="col-md-6 py-3">
-                  <div className="testi-content">
-                    <p>
-                      Necessitatibus ipsum magni accusantium consequatur
-                      delectus a repudiandae nemo quisquam dolorum itaque,
-                      tenetur, esse optio eveniet beatae explicabo sapiente quo.
-                    </p>
-                    <div className="entry-footer">
-                      <strong>Melvin Platje</strong> —{" "}
-                      <span className="text-grey">CEO Slurin Group</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="item">
-              <div className="row align-items-center">
-                <div className="col-md-6 py-3">
-                  <div className="testi-image">
-                    <img src="./images/person/person_2.jpg" alt />
-                  </div>
-                </div>
-                <div className="col-md-6 py-3">
-                  <div className="testi-content">
-                    <p>
-                      Repudiandae vero assumenda sequi labore ipsum eos ducimus
-                      provident a nam vitae et, dolorum temporibus inventore
-                      quaerat consectetur quos! Animi, qui ratione?
-                    </p>
-                    <div className="entry-footer">
-                      <strong>George Burke</strong> —{" "}
-                      <span className="text-grey">CEO Letro</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>{" "}
-        {/* .container */}
-      </div>{" "}
 
       {/* .page-section */}
       <div className="page-section">
@@ -118,23 +59,19 @@ export const About = () => {
             <div className="col-lg-6 py-3">
               <h2 className="title-section">Get in Touch</h2>
               <div className="divider" />
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                <br /> Laborum ratione autem quidem veritatis!
-              </p>
               <ul className="contact-list">
                 <li>
                   <div className="icon">
                     <span className="mai-map" />
                   </div>
-                  <div className="content">123 Fake Street, New York, USA</div>
+                  <div className="content">Sofia Street, Sofia, Bulgaria</div>
                 </li>
                 <li>
                   <div className="icon">
                     <span className="mai-mail" />
                   </div>
                   <div className="content">
-                    <a href="#">info@digigram.com</a>
+                    <a href="#">info@finco.io</a>
                   </div>
                 </li>
                 <li>
@@ -142,7 +79,7 @@ export const About = () => {
                     <span className="mai-phone-portrait" />
                   </div>
                   <div className="content">
-                    <a href="#">+00 1122 3344 55</a>
+                    <a href="#">+359 999 334 55</a>
                   </div>
                 </li>
               </ul>
