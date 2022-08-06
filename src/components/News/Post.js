@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 export const Post = ({ post }) => {
   return (
     <div className="col-md-6 col-lg-4 py-3">
@@ -15,16 +17,16 @@ export const Post = ({ post }) => {
         </div>
         <div className="body">
           <div className="post-title">
-            <a href="blog-single.html">{post.title}</a>
+            <Link to={`/news/${post.id}/details`}>{post.title}</Link>
           </div>
           <div className="post-excerpt">
             {post.description}
           </div>
         </div>
         <div className="footer">
-          <a href="blog-single.html">
+          <Link to={`/news/${post.id}`}>
             More <span className="mai-chevron-forward text-sm" />
-          </a>
+          </Link>
         </div>
       </div>
     </div>

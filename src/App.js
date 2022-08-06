@@ -16,6 +16,9 @@ import { CreateCard } from "./components/Create/CreateCard";
 import { CreateExpense } from "./components/Create/CreateExpense";
 import { CreateNewsPost } from "./components/Create/CreateNewsPost";
 
+import { NewsDetails } from "./components/News/NewsDetails";
+import { CardDetails } from "./components/Dashboard/CardDetails";
+
 import * as cardService from "./service/cardService";
 import * as expenseService from "./service/expenseService";
 import * as newsService from "./service/newsService";
@@ -63,6 +66,9 @@ function App() {
         <Route path="/addExpense" element={<CreateExpense />} />
         <Route path="/newPost" element={<CreateNewsPost />} />
         <Route path="/profile" element={<Profile />} />
+
+        <Route path="/news/:newsId" element={<NewsDetails post={post}/>} />
+        <Route path="/card/:cardId" element={<CardDetails cards={cards}/>} />
       </Routes>
       <Footer />
     </div>

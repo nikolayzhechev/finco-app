@@ -1,4 +1,6 @@
-export const CardItem = ({card}) => {
+import { Link } from "react-router-dom";
+
+export const CardItem = ({ card }) => {
   return (
     <div className="col-md-6 col-lg-4 py-3">
       <div className="card-blog">
@@ -21,9 +23,9 @@ export const CardItem = ({card}) => {
           </div>
         </div>
         <div className="footer">
-          <a href="blog-single.html">
+          <Link to={`/card/${card.id}`}>
             Details <span className="mai-chevron-forward text-sm" />
-          </a>
+          </Link>
         </div>
       </div>
     </div>

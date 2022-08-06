@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Post } from "./Post";
 
-export const News = ({post}) => {
+export const News = ({ post }) => {
   return (
     <main>
       <div className="page-section">
@@ -17,7 +17,7 @@ export const News = ({post}) => {
         <div className="container">
           <div className="row">
             
-            {post.map((x) => <Post post={x}/>)}
+            {post.map((x) => <Post key={x.id} post={x}/>)}
 
             <div className="col-12 mt-5">
               <nav aria-label="Page Navigation">

@@ -1,6 +1,6 @@
 ## finco. finance app
 
-# SoftUni project
+## SoftUni project
 
 ### Available Scripts
 
@@ -11,18 +11,21 @@ In the project directory, you can run:
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Technologies and frameworks used:
 
-### `npm test`
+- React;
+- Firebase;
+- React router dom;
+- Bootstrap;
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### This App will be deployed to Firebase
 
-### `npm run build`
+Direct link can be opened for project viewing:
 
+### App Info:
 
-### `npm run eject`
+finco. is a finance app, so it has functionality related to a personal wallet, financing tools and expense trackers.
 
+If you are registerrf or use an existing account, please navigate to Dashboard where the main functionality can be seen. All data is dynamically loaded from the Firebase database. You can `create` and `edit` items.
 
-### `npm run build` fails to minify
+Authnetication and authorization is also implemented. So you can `edit` and `delete` only if you are authorized to do so.

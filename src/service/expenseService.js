@@ -8,7 +8,7 @@ export const addExpenseService = async (expenseData) => {
       paymentMethod: expenseData.paymentMethod,
       amount: expenseData.amount,
       period: expenseData.period,
-      image: expenseData.image,
+      image: expenseData.image
     });
     console.log(docRef.id);
 
