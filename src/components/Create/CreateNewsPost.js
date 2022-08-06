@@ -1,17 +1,17 @@
 import { Link, useNavigate } from "react-router-dom";
-import { addExpenseService } from "../../service/expenseService";
+import { addNewsService } from "../../service/newsService";
 
-export const CreateExpense = () => {
-  const navigate = useNavigate();
-  const onSubmit = (e) => {
-    e.preventDefault();
+export const CreateNewsPost = () => {
+    const navigate = useNavigate();
+    const onSubmit = (e) => {
+        e.preventDefault();
 
-    const expenseData = Object.fromEntries(new FormData(e.target));
+        const newsData = Object.fromEntries(new FormData(e.target));
 
-    addExpenseService(expenseData);
+        addNewsService(newsData);
 
-    navigate('/dashboard');
-  };
+        navigate('/news');
+    }
 
   return (
     <div className="page-section">
@@ -20,52 +20,40 @@ export const CreateExpense = () => {
           {/* Form */}
           <div className="col-lg-6 py-3">
             <div className="subhead"></div>
-            <h2 className="title-section">Add New Expense</h2>
+            <h2 className="title-section">Add a News Post</h2>
             <div className="divider" />
             <form onSubmit={onSubmit}>
-              <label htmlFor="type">
-                <b>Type</b>
+              <label htmlFor="author">
+                <b>Author</b>
               </label>
               <div className="py-2">
                 <input
                   type="text"
                   className="form-control"
-                  placeholder="Type of Expense"
-                  name="type"
+                  placeholder="Author Names"
+                  name="author"
                   required
                 />
               </div>
               <div className="py-2">
-                <label htmlFor="paymentMethod">
-                  <b>Payment method</b>
+                <label htmlFor="title">
+                  <b>Title</b>
                 </label>
                 <input
                   type="text"
-                  placeholder="Method of Direct Payment"
-                  name="paymentMethod"
+                  placeholder="News Post Title"
+                  name="title"
                   className="form-control"
                 />
               </div>
               <div className="py-2">
-                <label htmlFor="amount">
-                  <b>Amount</b>
+                <label htmlFor="description">
+                  <b>Description</b>
                 </label>
                 <input
                   type="text"
-                  placeholder="Amount to be Payed"
-                  name="amount"
-                  className="form-control"
-                  required
-                />
-              </div>
-              <div className="py-2">
-                <label htmlFor="period">
-                  <b>Period</b>
-                </label>
-                <input
-                  type="text"
-                  placeholder="Period of Payments"
-                  name="period"
+                  placeholder="News Post Description"
+                  name="description"
                   className="form-control"
                   required
                 />
@@ -76,7 +64,7 @@ export const CreateExpense = () => {
                 </label>
                 <input
                   type="text"
-                  placeholder="Add your Image"
+                  placeholder="Author Image"
                   name="image"
                   className="form-control"
                   required

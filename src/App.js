@@ -1,4 +1,5 @@
 import { Routes, Route, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 import * as fireBaseService from "./firebase/firebaseConfig";
 
 import { Header } from "./components/Header";
@@ -13,23 +14,54 @@ import { Profile } from "./components/Users/Profile";
 
 import { CreateCard } from "./components/Create/CreateCard";
 import { CreateExpense } from "./components/Create/CreateExpense";
+import { CreateNewsPost } from "./components/Create/CreateNewsPost";
+
+import * as cardService from "./service/cardService";
+import * as expenseService from "./service/expenseService";
+import * as newsService from "./service/newsService";
 
 function App() {
-  //   Use context if needed
   const navigate = useNavigate();
+
+  const [cards, setCards] = useState([]);
+  const [expense, setExpense] = useState([]);
+  const [post, setPost] = useState([]);
+
+   useEffect(() => {
+    cardService.getAllCards()
+        .then(result => {
+            setCards(result);
+        })
+   }, []);
+
+   useEffect(() => {
+    expenseService.getAllExpenses()
+        .then(result => {
+            setExpense(result);
+        })
+   }, []);
+
+   useEffect(() => {
+    newsService.getAllPosts()
+        .then(result => {
+            setPost(result);
+        })
+   }, []);
+
   return (
     <div>
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/news" element={<News />} />
+        <Route path="/dashboard" element={<Dashboard cards={cards} expense={expense}/>} />
+        <Route path="/news" element={<News post={post}/>} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
 
         <Route path="/addCard" element={<CreateCard />} />
         <Route path="/addExpense" element={<CreateExpense />} />
+        <Route path="/newPost" element={<CreateNewsPost />} />
         <Route path="/profile" element={<Profile />} />
       </Routes>
       <Footer />

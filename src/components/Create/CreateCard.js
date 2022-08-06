@@ -30,27 +30,19 @@ export const CreateCard = () => {
                 <input
                   type="text"
                   className="form-control"
-                  placeholder="Bank"
+                  placeholder="Bank Name"
                   name="bank"
                 />
               </div>
               <div className="py-2">
                 <input
-                  type="radio"
+                  type="text"
+                  className="form-control"
+                  placeholder="Bank Type"
                   name="bankType"
                 />
-                <label htmlFor="bankType">Visa</label> <br></br>
-                <input
-                  type="radio"
-                  name="bankType"
-                />
-                <label htmlFor="bankType">Master Card</label> <br></br>
-                <input
-                  type="radio"
-                  name="bankType"
-                />
-                <label htmlFor="bankType">Maestro</label>
               </div>
+          
               <div className="py-2">
                 <label htmlFor="cardNumber">
                   <b>Card Number</b>

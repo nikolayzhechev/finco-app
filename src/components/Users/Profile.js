@@ -18,7 +18,6 @@ export const Profile = () => {
                 <input
                   type="text"
                   className="form-control"
-                  placeholder="Email"
                 />
               </div>
               <div className="py-2">
@@ -27,7 +26,6 @@ export const Profile = () => {
                 </label>
                 <input
                   type="text"
-                  placeholder="Enter Password"
                   name="number"
                   className="form-control"
                   required
@@ -39,7 +37,6 @@ export const Profile = () => {
                 </label>
                 <input
                   type="text"
-                  placeholder="Enter Password"
                   name="valid"
                   className="form-control"
                   required
