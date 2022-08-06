@@ -16,12 +16,12 @@ export const Home = () => {
               <Link to={"/about"} className="btn btn-outline border text-secondary">
                 More Info
               </Link>
-              <a href="/" className="btn btn-primary btn-split ml-2">
+              <Link to={"/register"} className="btn btn-primary btn-split ml-2">
                 Sign Up{" "}
                 <div className="fab">
                   <span className="mai-play" />
                 </div>
-              </a>
+              </Link>
             </div>
             <div className="col-lg-6 py-3 wow zoomIn">
               <div className="img-place">
