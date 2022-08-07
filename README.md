@@ -22,7 +22,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 ### This App will be deployed to Firebase
 
-Direct link can be opened for project viewing:
+Direct link can be opened for project viewing: https://finco-app-3c312.web.app/
 
 ### App Info:
 
