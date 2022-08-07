@@ -50,7 +50,7 @@ export const Dashboard = ({cards, expense}) => {
       <div className="container wow fadeInUp">
         <div className="row">
           {cards.length > 0 ? (
-            cards.map((x) => <CardItem card={x} />)
+            cards.map((x) => <CardItem key={cards.id} card={x} />)
           ) : (
               <div className="col-lg-4 py-3">
                 <p>No cards have been added.</p>
