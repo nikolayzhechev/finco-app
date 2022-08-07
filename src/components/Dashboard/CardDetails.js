@@ -14,6 +14,10 @@ export const CardDetails = () => {
             });
      });
 
+    const deleteCard = () => {
+      cardService.deleteOneCard(cardId);
+    };
+
   return (
     <div className="page-section">
       <div className="container">
@@ -30,12 +34,12 @@ export const CardDetails = () => {
             Valid Thru: {currentCard.valid} <br></br>
             Covers main expenses.
             </p>
-            <a href="/" className="btn btn-primary">
+            <Link to={`/card/${currentCard.id}/edit`} className="btn btn-primary">
               Edit
-            </a>
-            <a href="/" className="btn btn-outline ml-2">
+            </Link>
+            <button onClick={deleteCard} className="btn btn-outline ml-2">
               Delete
-            </a>
+            </button>
           </div>
           <div className="col-lg-6 py-3 wow zoomIn">
             <div className="img-place text-center">

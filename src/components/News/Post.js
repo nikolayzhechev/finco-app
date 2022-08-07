@@ -6,7 +6,7 @@ export const Post = ({ post }) => {
       <div className="card-blog">
         <div className="header">
           <div className="avatar">
-            <img src={post.image} alt />
+            <img src={post.img} alt="img" />
           </div>
           <div className="entry-footer">
             <div className="post-author">{post.author}</div>

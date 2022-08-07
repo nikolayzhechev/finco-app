@@ -2,10 +2,10 @@ import { db } from "../firebase/firebaseConfig";
 import {
   collection,
   addDoc,
-  getDoc,
   getDocs,
-  doc,
   updateDoc,
+  doc,
+  deleteDoc,
 } from "firebase/firestore";
 
 export const addCardService = async (cardData) => {
@@ -19,7 +19,6 @@ export const addCardService = async (cardData) => {
       type: cardData.type,
       img: cardData.img,
     });
-    console.log(docRef.id);
 
     updateDoc(docRef, {
       id: docRef.id,
@@ -51,4 +50,23 @@ export const getOneCard = async (cardId) => {
   const currentItem = cardsData.filter((item) => item.id === cardId);
 
   return currentItem[0];
+};
+
+export const updateOneCard = async (cardId, cardData) => {
+  const item = doc(db, "cards", cardId);
+
+  await updateDoc(item, {
+    bank: cardData.bank,
+    bankType: cardData.bankType,
+    cardNumber: cardData.cardNumber,
+    owner: cardData.owner,
+    valid: cardData.valid,
+    type: cardData.type,
+    img: cardData.img,
+  });
+};
+
+export const deleteOneCard = async (cardId) => {
+  const item = doc(db, "cards", cardId);
+  await deleteDoc(doc(db, "cards", item));
 };

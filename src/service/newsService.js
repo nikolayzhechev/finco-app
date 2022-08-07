@@ -53,3 +53,14 @@ export const getOnePost = async (newsId) => {
   
   return currentItem[0];
 };
+
+export const updateOnePost = async (newsId, postData) => {
+  const item = doc(db, "news", newsId);
+
+  await updateDoc(item, {
+    author: postData.author,
+    title: postData.title,
+    description: postData.description,
+    image: postData.image
+  });
+};

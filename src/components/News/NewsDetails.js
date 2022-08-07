@@ -27,9 +27,9 @@ export const NewsDetails = () => {
             <p className="mb-5">
             {currentPost.description}
             </p>
-            <a href="/" className="btn btn-primary">
+            <Link to={`/card/${currentPost.id}/edit`} className="btn btn-primary">
               Edit
-            </a>
+            </Link>
             <a href="/" className="btn btn-outline ml-2">
               Delete
             </a>
