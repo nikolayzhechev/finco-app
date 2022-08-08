@@ -34,7 +34,7 @@ If you are registered or use an existing account, please navigate to Dashboard w
 
 Authnetication and authorization is also implemented. So you can `edit` and `delete` only if you are authorized to do so.
 
-Since the authentication is based on the Firebase service, please feel free to create a new user and use it for testing (if not use:  email: nikolayzhehcev@yahoo; pass: 1234qwer)
+Since the authentication is based on the Firebase service, please feel free to create a new user and use it for testing (if not use:  email: nikolayzhechev@yahoo; pass: 1234qwer)
 
 #### Still to implement:
 - delete funciotnality;
