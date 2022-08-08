@@ -2,6 +2,7 @@ import { db } from "../firebase/firebaseConfig";
 import {
   collection,
   addDoc,
+  getDoc,
   getDocs,
   updateDoc,
   doc,
@@ -23,6 +24,9 @@ export const addCardService = async (cardData) => {
     updateDoc(docRef, {
       id: docRef.id,
     });
+    const item = await getDoc(docRef);
+
+    return item.data();
   } catch (error) {
     console.error(error);
   }

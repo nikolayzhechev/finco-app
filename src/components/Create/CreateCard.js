@@ -1,14 +1,21 @@
+import { useContext } from "react";
+import { CardContext } from "../../context/CardContext";
 import { Link, useNavigate } from "react-router-dom";
 import { addCardService } from "../../service/cardService";
 
 export const CreateCard = () => {
+  const { cardAdd } = useContext(CardContext);
   const navigate = useNavigate();
+
   const onSubmit = (e) => {
     e.preventDefault();
 
     const cardData = Object.fromEntries(new FormData(e.target));
 
-    addCardService(cardData);
+    addCardService(cardData)
+        .then(result => {
+          cardAdd(result);
+        });
     
     navigate("/dashboard");
   };

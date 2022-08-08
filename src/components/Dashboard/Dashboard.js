@@ -86,7 +86,7 @@ export const Dashboard = ({cards, expense}) => {
           <h5 className="wow fadeInUp">Main Expenses</h5>
           <div className="row justify-content-center">
           {expense.length > 0 ? (
-            expense.map((x) => <ExpenseItem expense={x} />)
+            expense.map((x) => <ExpenseItem key={expense.id} expense={x} />)
           ) : (
               <div className="col-lg-4 py-3">
                 <p>No expenses have been added.</p>

@@ -23,7 +23,7 @@ import { EditPost } from "./components/News/EditPost";
 import * as cardService from "./service/cardService";
 import * as expenseService from "./service/expenseService";
 import * as newsService from "./service/newsService";
-import { AuthContext } from "./context/AuthContext";
+import { CardContext } from "./context/CardContext";
 
 function App() {
   // check delete functionality
@@ -33,6 +33,12 @@ function App() {
   const [expense, setExpense] = useState([]);
   const [post, setPost] = useState([]);
   //const [auth, setAuth] = useState({});
+  const cardAdd = (cardData) => {
+    setCards(state => [
+      ...state,
+      cardData,
+      ]);
+  };
 
   useEffect(() => {
     cardService.getAllCards().then((result) => {
@@ -55,43 +61,45 @@ function App() {
   // const userLogin = async (authData) => {
   //   setAuth(authData);
   // };
-
+console.log(cards);
   return (
-    // <AuthContext.Provider value={{ auth, userLogin }}>
+
       <div>
         <Header />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route
-            path="/dashboard"
-            element={<Dashboard cards={cards} expense={expense} />}
-          />
-          <Route path="/news" element={<News post={post} />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/logout" element={<Logout />} />
-
-          <Route path="/addCard" element={<CreateCard />} />
-          <Route path="/addExpense" element={<CreateExpense />} />
-          <Route path="/newPost" element={<CreateNewsPost />} />
-          <Route path="/profile" element={<Profile />} />
-
-          <Route path="/news/:newsId" element={<NewsDetails post={post} />} />
-          <Route path="/card/:cardId" element={<CardDetails cards={cards} />} />
-          <Route
-            path="/card/:cardId/edit"
-            element={<EditCard cards={cards} />}
-          />
-
-          <Route
-            path="/news/:newsId/edit"
-            element={<EditPost expense={expense} />}
-          />
-        </Routes>
+          <CardContext.Provider value={{ cardAdd }}>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route
+                path="/dashboard"
+                element={<Dashboard cards={cards} expense={expense} />}
+              />
+              <Route path="/news" element={<News post={post} />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+              <Route path="/logout" element={<Logout />} />
+      
+              <Route path="/addCard" element={<CreateCard />} />
+              <Route path="/addExpense" element={<CreateExpense />} />
+              <Route path="/newPost" element={<CreateNewsPost />} />
+              <Route path="/profile" element={<Profile />} />
+      
+              <Route path="/news/:newsId" element={<NewsDetails post={post} />} />
+              <Route path="/card/:cardId" element={<CardDetails cards={cards} />} />
+              <Route
+                path="/card/:cardId/edit"
+                element={<EditCard cards={cards} />}
+              />
+    
+              <Route
+                path="/news/:newsId/edit"
+                element={<EditPost expense={expense} />}
+              />
+            </Routes>
+          </CardContext.Provider>
         <Footer />
       </div>
-    // </AuthContext.Provider>
+
   );
 }
 
