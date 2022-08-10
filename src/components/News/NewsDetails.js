@@ -1,18 +1,22 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import * as newsService from "../../service/newsService";
+import { getAuth } from "firebase/auth";
 
 export const NewsDetails = () => {
     const [currentPost, setCurrentPost] = useState({});
-
     const { newsId } = useParams();
+
+    const auth = getAuth();
+    const user = auth.currentUser;
+    const isAuth = user.uid === currentPost.uid;
 
   useEffect(() => {
         newsService.getOnePost(newsId)
             .then(result => {
                 setCurrentPost(result);
             });
-     });
+     }, []);
 
   return (
     <div className="page-section">
@@ -27,18 +31,18 @@ export const NewsDetails = () => {
             <p className="mb-5">
             {currentPost.description}
             </p>
-            <Link to={`/news/${currentPost.id}/edit`} className="btn btn-primary">
-              Edit
-            </Link>
-            <Link to={`/delete/${newsId}`} className="btn btn-outline ml-2">
-              Delete
-            </Link>
+              {
+              isAuth &&
+                <div>
+                  <Link to={`/news/${currentPost.id}/edit`} className="btn btn-primary">
+                    Edit
+                  </Link>
+                  <Link to={`/newsDelete/${newsId}`} className="btn btn-outline ml-2">
+                    Delete
+                  </Link>
+                </div>
+              }
           </div>
-          {/* <div className="col-lg-6 py-3 wow zoomIn">
-            <div className="img-place text-center">
-              <img src={currentPost.image} alt="" />
-            </div>
-          </div> */}
         </div>
       </div>{" "}
     </div>

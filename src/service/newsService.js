@@ -8,8 +8,11 @@ import {
   updateDoc,
   deleteDoc
 } from "firebase/firestore";
+import { getAuth } from "firebase/auth";
 
 export const addNewsService = async (newsData) => {
+  const auth = getAuth();
+  const user = auth.currentUser;
   try {
     const docRef = await addDoc(collection(db, "news"), {
       author: newsData.author,
@@ -20,6 +23,11 @@ export const addNewsService = async (newsData) => {
     updateDoc(docRef, {
       id: docRef.id,
     });
+    if(user){
+      updateDoc(docRef, {
+        uid: user.uid
+      });
+    }
     const item = await getDoc(docRef);
 
     return item.data();

@@ -92,12 +92,6 @@ export const Home = () => {
               <div className="img-place mb-3">
                 <img src="./images/testi_image.png" alt="" />
               </div>
-              <a href="/" className="btn btn-primary">
-                More Details
-              </a>
-              <a href="/" className="btn btn-outline border ml-2">
-                Success Stories
-              </a>
             </div>
           </div>
         </div>{" "}
@@ -141,12 +135,9 @@ export const Home = () => {
               <p className="mb-5">
                 Know where your money is going and automatically sort transactions. Get advanced but easy to use dashboard charts and details. 
               </p>
-              <a href="/" className="btn btn-primary">
+              <Link to={"/about"} className="btn btn-primary">
                 More Details
-              </a>
-              <a href="/" className="btn btn-outline ml-2">
-                See pricing
-              </a>
+              </Link>
             </div>
             <div className="col-lg-6 py-3 wow zoomIn">
               <div className="img-place text-center">

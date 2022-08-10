@@ -94,11 +94,11 @@ function App() {
                   path="/dashboard"
                   element={<Dashboard cards={cards} expense={expense} />}
                 />
-                <Route path="/delete/:cardId" element={<DeleteCard />} />
+                
                 <Route path="/news" element={<News post={post} />} />
                 <Route path="/newPost" element={<CreateNewsPost />} />
                 <Route path="/news/:newsId" element={<NewsDetails post={post} />} />
-                <Route path="/delete/:newsId" element={<DeletePost />} />
+                <Route path="/newsDelete/:newsId" element={<DeletePost />} />
 
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
@@ -108,6 +108,7 @@ function App() {
                 <Route path="/addCard" element={<CreateCard />} />
                 <Route path="/addExpense" element={<CreateExpense />} />
                 <Route path="/card/:cardId" element={<CardDetails cards={cards} />} />
+                <Route path="/cardDelete/:cardId" element={<DeleteCard />} />
                 <Route
                   path="/card/:cardId/edit"
                   element={<EditCard cards={cards} />}

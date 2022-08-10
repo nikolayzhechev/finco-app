@@ -1,25 +1,19 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import * as authService from "../service/authService";
-import {getAuth, onAuthStateChanged} from "firebase/auth";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 export const Header = () => {
-  // const { auth } = useContext(AuthContext);
   const [state, setState] = useState();
+  const auth = getAuth();
   
-
-    const auth = getAuth();
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
         setState(user);
-        //console.log(user)
       } else {
         setState(user);
-        //console.log(user)
       }
     });
-
   }, []);
 
   return (

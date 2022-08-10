@@ -34,7 +34,7 @@ export const CardDetails = () => {
               Edit
             </Link>
             <button  className="btn btn-outline ml-2">
-              <Link to={`/delete/${cardId}`}>
+              <Link to={`/cardDelete/${cardId}`}>
                 Delete
               </Link>
             </button>
