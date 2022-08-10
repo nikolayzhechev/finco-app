@@ -14,10 +14,6 @@ export const CardDetails = () => {
             });
      });
 
-    const deleteCard = () => {
-      cardService.deleteOneCard(cardId);
-    };
-
   return (
     <div className="page-section">
       <div className="container">
@@ -37,8 +33,10 @@ export const CardDetails = () => {
             <Link to={`/card/${currentCard.id}/edit`} className="btn btn-primary">
               Edit
             </Link>
-            <button onClick={deleteCard} className="btn btn-outline ml-2">
-              Delete
+            <button  className="btn btn-outline ml-2">
+              <Link to={`/delete/${cardId}`}>
+                Delete
+              </Link>
             </button>
           </div>
           <div className="col-lg-6 py-3 wow zoomIn">

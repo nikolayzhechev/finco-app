@@ -1,16 +1,32 @@
-import { updateOnePost } from "../../service/newsService";
+import { useContext } from "react";
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import { updateOnePost, getOnePost } from "../../service/newsService";
+import { NewsPostContext } from "../../context/NewsPostContext";
 
 export const EditPost = () => {
+    const navigate = useNavigate();
     const { newsId } = useParams();
+    const [ currentPost, setCurrentPost ] = useState({});
+    const { newsEdit } = useContext(NewsPostContext);
+
+    useEffect(() => {
+      getOnePost(newsId)
+        .then(result => {
+          setCurrentPost(result);
+        }); 
+    }, []);
 
     const onSubmit = (e) => {
         e.preventDefault();
 
         const newsData = Object.fromEntries(new FormData(e.target));
 
-        updateOnePost(newsId, newsData);
+        updateOnePost(newsId, newsData)
+          .then(result => {
+            newsEdit(newsId, result);
+            navigate("/news");
+          });
     }
 
   return (
@@ -32,6 +48,7 @@ export const EditPost = () => {
                   className="form-control"
                   placeholder="Author Names"
                   name="author"
+                  defaultValue={currentPost.author}
                   required
                 />
               </div>
@@ -43,6 +60,7 @@ export const EditPost = () => {
                   type="text"
                   placeholder="News Post Title"
                   name="title"
+                 defaultValue={currentPost.title}
                   className="form-control"
                 />
               </div>
@@ -54,6 +72,7 @@ export const EditPost = () => {
                   type="text"
                   placeholder="News Post Description"
                   name="description"
+                  defaultValue={currentPost.description}
                   className="form-control"
                   required
                 />
@@ -66,6 +85,7 @@ export const EditPost = () => {
                   type="text"
                   placeholder="Author Image"
                   name="image"
+                 defaultValue={currentPost.image}
                   className="form-control"
                   required
                 />

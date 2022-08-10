@@ -27,12 +27,12 @@ export const NewsDetails = () => {
             <p className="mb-5">
             {currentPost.description}
             </p>
-            <Link to={`/card/${currentPost.id}/edit`} className="btn btn-primary">
+            <Link to={`/news/${currentPost.id}/edit`} className="btn btn-primary">
               Edit
             </Link>
-            <a href="/" className="btn btn-outline ml-2">
+            <Link to={`/delete/${newsId}`} className="btn btn-outline ml-2">
               Delete
-            </a>
+            </Link>
           </div>
           {/* <div className="col-lg-6 py-3 wow zoomIn">
             <div className="img-place text-center">

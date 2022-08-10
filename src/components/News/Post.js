@@ -6,18 +6,16 @@ export const Post = ({ post }) => {
       <div className="card-blog">
         <div className="header">
           <div className="avatar">
-            <img src={post.img} alt="img" />
+            <img src={post.image} alt="img" />
           </div>
           <div className="entry-footer">
             <div className="post-author">{post.author}</div>
-            <a href="#" className="post-date">
               23 Apr 2020
-            </a>
           </div>
         </div>
         <div className="body">
           <div className="post-title">
-            <Link to={`/news/${post.id}/details`}>{post.title}</Link>
+            <Link to={`/news/${post.id}`}>{post.title}</Link>
           </div>
           <div className="post-excerpt">
             {post.description}

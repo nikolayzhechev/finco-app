@@ -1,14 +1,21 @@
+import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { addNewsService } from "../../service/newsService";
+import { NewsPostContext } from "../../context/NewsPostContext";
 
 export const CreateNewsPost = () => {
+    const { newsAdd } = useContext(NewsPostContext);
     const navigate = useNavigate();
+    
     const onSubmit = (e) => {
         e.preventDefault();
 
         const newsData = Object.fromEntries(new FormData(e.target));
 
-        addNewsService(newsData);
+        addNewsService(newsData)
+          .then(result => {
+            newsAdd(result);
+          });
 
         navigate('/news');
     }

@@ -68,9 +68,13 @@ export const updateOneCard = async (cardId, cardData) => {
     type: cardData.type,
     img: cardData.img,
   });
+
+  const updatedItem = doc(db, "cards", cardId);
+  const docSnap = await getDoc(updatedItem);
+
+  return docSnap.data();
 };
 
 export const deleteOneCard = async (cardId) => {
-  const item = doc(db, "cards", cardId);
-  await deleteDoc(doc(db, "cards", item));
+  await deleteDoc(doc(db, "cards", cardId));
 };

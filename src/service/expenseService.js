@@ -1,5 +1,5 @@
 import { db } from "../firebase/firebaseConfig";
-import { collection, addDoc, getDoc, getDocs, doc } from "firebase/firestore";
+import { collection, addDoc, getDoc, getDocs, doc, updateDoc } from "firebase/firestore";
 
 export const addExpenseService = async (expenseData) => {
   try {
@@ -10,8 +10,12 @@ export const addExpenseService = async (expenseData) => {
       period: expenseData.period,
       image: expenseData.image
     });
-    console.log(docRef.id);
+    updateDoc(docRef, {
+      id: docRef.id,
+    });
+    const item = await getDoc(docRef);
 
+    return item.data();
   } catch (error) {
     console.error(error);
   }

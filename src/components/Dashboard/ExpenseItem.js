@@ -1,4 +1,4 @@
-export const ExpenseItem = ({expense}) => {
+export const ExpenseItem = ({ expense }) => {
   return (
     <div className="col-md-6 col-lg-4 py-3 wow fadeInUp">
       <div className="d-flex flex-row">
@@ -8,7 +8,8 @@ export const ExpenseItem = ({expense}) => {
         <div>
           <h5>{expense.type}</h5>
           <p>
-            {expense.period}<br></br>Avarage: <strong>{expense.amount}</strong>
+            {expense.period}
+            <br></br>Avarage: <strong>{expense.amount}</strong>
           </p>
         </div>
       </div>

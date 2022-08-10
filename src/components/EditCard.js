@@ -1,16 +1,19 @@
-import { updateOneCard, getOneCard } from "../service/cardService";
+import { useContext } from "react";
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import { CardContext } from "../context/CardContext";
+import { updateOneCard, getOneCard } from "../service/cardService";
 
-export const EditCard = ({ cards }) => {
+export const EditCard = () => {
     const navigate = useNavigate();
+    const { cardEdit } = useContext(CardContext);
     const [currentCard, setCurrentCard] = useState({});
     const { cardId } = useParams();
 
     useEffect(() => {
       getOneCard(cardId)
           .then(result => {
-              setCurrentCard(result);
+            setCurrentCard(result);
           });
    }, []);
 
@@ -20,9 +23,11 @@ export const EditCard = ({ cards }) => {
         const cardData = Object.fromEntries(new FormData(e.target));
 
         updateOneCard(cardId, cardData)
-
-        navigate("/dashboard");
-    }
+          .then(result => {
+            cardEdit(cardId, result);
+            navigate("/dashboard");
+          })
+    };
 
   return (
     <div className="page-section">

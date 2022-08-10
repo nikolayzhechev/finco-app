@@ -5,11 +5,8 @@ import {
   getDoc,
   getDocs,
   doc,
-  docs,
   updateDoc,
-  query,
-  where,
-  get,
+  deleteDoc
 } from "firebase/firestore";
 
 export const addNewsService = async (newsData) => {
@@ -20,11 +17,12 @@ export const addNewsService = async (newsData) => {
       description: newsData.description,
       image: newsData.image,
     });
-    console.log(docRef.id);
-
     updateDoc(docRef, {
       id: docRef.id,
     });
+    const item = await getDoc(docRef);
+
+    return item.data();
   } catch (error) {
     console.error(error);
   }
@@ -63,4 +61,13 @@ export const updateOnePost = async (newsId, postData) => {
     description: postData.description,
     image: postData.image
   });
+
+  const updatedItem = doc(db, "news", newsId);
+  const docSnap = await getDoc(updatedItem);
+
+  return docSnap.data();
+};
+
+export const deleteOnePost = async (newsId) => {
+  await deleteDoc(doc(db, "news", newsId));
 };
