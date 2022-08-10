@@ -1,9 +1,14 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Tables } from "./Tables";
 import { CardItem } from "./CardItem";
 import { ExpenseItem } from "./ExpenseItem";
 
-export const Dashboard = ({cards, expense}) => {
+export const Dashboard = ({ cards, expense }) => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <main>
       <div className="page-section"></div>
@@ -50,14 +55,17 @@ export const Dashboard = ({cards, expense}) => {
       <div className="container wow fadeInUp">
         <div className="row">
           {cards.length > 0 ? (
-            cards.map((x) => <CardItem key={cards.id} card={x} />)
+            cards.map((x) => <CardItem key={x.id} card={x} />)
           ) : (
-              <div className="col-lg-4 py-3">
-                <p>No cards have been added.</p>
-                <Link to={"/addCard"} className="btn btn-outline border text-secondary">
-                  Add Card
-                </Link>
-              </div>
+            <div className="col-lg-4 py-3">
+              <p>No cards have been added.</p>
+              <Link
+                to={"/addCard"}
+                className="btn btn-outline border text-secondary"
+              >
+                Add Card
+              </Link>
+            </div>
           )}
           <div className="col-md-6 col-lg-4 py-3"></div>
           <div className="col-md-6 col-lg-4 py-3"></div>
@@ -85,16 +93,19 @@ export const Dashboard = ({cards, expense}) => {
         <div className="container">
           <h5 className="wow fadeInUp">Main Expenses</h5>
           <div className="row justify-content-center">
-          {expense.length > 0 ? (
-            expense.map((x) => <ExpenseItem key={expense.id} expense={x} />)
-          ) : (
+            {expense.length > 0 ? (
+              expense.map((x) => <ExpenseItem key={x.id} expense={x} />)
+            ) : (
               <div className="col-lg-4 py-3">
                 <p>No expenses have been added.</p>
-                <Link to={"/addCard"} className="btn btn-outline border text-secondary">
+                <Link
+                  to={"/addCard"}
+                  className="btn btn-outline border text-secondary"
+                >
                   Add Expense
                 </Link>
               </div>
-          )}
+            )}
           </div>
         </div>{" "}
         {/* .container */}

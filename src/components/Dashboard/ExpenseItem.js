@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export const ExpenseItem = ({ expense }) => {
   return (
     <div className="col-md-6 col-lg-4 py-3 wow fadeInUp">
@@ -10,6 +12,8 @@ export const ExpenseItem = ({ expense }) => {
           <p>
             {expense.period}
             <br></br>Avarage: <strong>{expense.amount}</strong>
+            <br></br>
+            <Link to={`/expenseDelete/${expense.id}`}>Remove Item</Link>
           </p>
         </div>
       </div>

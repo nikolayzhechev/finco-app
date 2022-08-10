@@ -1,14 +1,21 @@
-import { Link, useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { addExpenseService } from "../../service/expenseService";
+import { ExpenseContext } from "../../context/ExpenseContext";
 
 export const CreateExpense = () => {
   const navigate = useNavigate();
+  const { expenseHandler } = useContext(ExpenseContext);
+
   const onSubmit = (e) => {
     e.preventDefault();
 
     const expenseData = Object.fromEntries(new FormData(e.target));
 
-    addExpenseService(expenseData);
+    addExpenseService(expenseData)
+      .then(result => {
+        expenseHandler(result);
+      });
 
     navigate('/dashboard');
   };

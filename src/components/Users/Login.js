@@ -1,11 +1,13 @@
-import { useContext } from "react";
+import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import * as authService from "../../service/authService";
-import { AuthContext } from "../../context/AuthContext";
 
 export const Login = () => {
   const navigate = useNavigate();
-  //const { userLogin } = useContext(AuthContext);
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -16,7 +18,6 @@ export const Login = () => {
 
     authService.login(email, password)
 		.then((authData) => {
-    	  //userLogin(authData);
     	  navigate("/");
     	});
   };

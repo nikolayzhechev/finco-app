@@ -1,11 +1,15 @@
-import { useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useContext, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { addNewsService } from "../../service/newsService";
 import { NewsPostContext } from "../../context/NewsPostContext";
 
 export const CreateNewsPost = () => {
     const { newsAdd } = useContext(NewsPostContext);
     const navigate = useNavigate();
+
+    useEffect(() => {
+      window.scrollTo(0, 0) // back to top
+    }, [])
     
     const onSubmit = (e) => {
         e.preventDefault();

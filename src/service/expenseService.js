@@ -1,5 +1,13 @@
 import { db } from "../firebase/firebaseConfig";
-import { collection, addDoc, getDoc, getDocs, doc, updateDoc } from "firebase/firestore";
+import {
+  collection,
+  addDoc,
+  getDoc,
+  getDocs,
+  doc,
+  updateDoc,
+  deleteDoc,
+} from "firebase/firestore";
 
 export const addExpenseService = async (expenseData) => {
   try {
@@ -8,7 +16,7 @@ export const addExpenseService = async (expenseData) => {
       paymentMethod: expenseData.paymentMethod,
       amount: expenseData.amount,
       period: expenseData.period,
-      image: expenseData.image
+      image: expenseData.image,
     });
     updateDoc(docRef, {
       id: docRef.id,
@@ -30,4 +38,8 @@ export const getAllExpenses = async () => {
   });
 
   return expenseData;
+};
+
+export const deleteOneExpense = async (expenseId) => {
+  await deleteDoc(doc(db, "expense", expenseId));
 };

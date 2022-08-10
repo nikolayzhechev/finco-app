@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 
 import { Header } from "./components/Header";
 import { Home } from "./components/Home";
@@ -21,12 +21,15 @@ import { EditCard } from "./components/EditCard";
 import { EditPost } from "./components/News/EditPost";
 import { DeletePost } from "./components/News/DeletePost";
 import { DeleteCard } from "./components/Dashboard/DeleteCard";
+import { DeleteExpense } from "./components/Dashboard/ExpenseDelete";
 
 import * as cardService from "./service/cardService";
 import * as expenseService from "./service/expenseService";
 import * as newsService from "./service/newsService";
 import { CardContext } from "./context/CardContext";
 import { NewsPostContext } from "./context/NewsPostContext";
+import { ExpenseContext } from "./context/ExpenseContext";
+import { Spinner } from "./components/Spinner";
 
 function App() {
   const [cards, setCards] = useState([]);
@@ -62,7 +65,15 @@ function App() {
 
   const newsEdit = (newsId, newsData) => {
     setPost(state => state.map(x => x.id === newsId ? newsData : x))
-  }
+  };
+
+  const expenseHandler = (data) => {
+    setExpense(state => [...state, data]);
+  };
+
+  const expenseDel = (data) => {
+    setExpense(data);
+  };
 
   useEffect(() => {
     cardService.getAllCards().then((result) => {
@@ -87,37 +98,40 @@ function App() {
         <Header />
           <CardContext.Provider value={{ cardAdd, cardEdit, cardDel }}>
             <NewsPostContext.Provider value={{ newsAdd, newsEdit, newsDel }}>
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/about" element={<About />} />
-                <Route
-                  path="/dashboard"
-                  element={<Dashboard cards={cards} expense={expense} />}
-                />
-                
-                <Route path="/news" element={<News post={post} />} />
-                <Route path="/newPost" element={<CreateNewsPost />} />
-                <Route path="/news/:newsId" element={<NewsDetails post={post} />} />
-                <Route path="/newsDelete/:newsId" element={<DeletePost />} />
+              <ExpenseContext.Provider value={{ expenseHandler, expenseDel }}>
+                <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/about" element={<About />} />
+                  <Route
+                    path="/dashboard"
+                    element={<Dashboard cards={cards} expense={expense} />}
+                  />
 
-                <Route path="/login" element={<Login />} />
-                <Route path="/register" element={<Register />} />
-                <Route path="/logout" element={<Logout />} />
-                <Route path="/profile" element={<Profile />} />
+                  <Route path="/news" element={<Suspense fallback={Spinner}><News post={post} /></Suspense>} />
+                  <Route path="/newPost" element={<CreateNewsPost />} />
+                  <Route path="/news/:newsId" element={<NewsDetails post={post} />} />
+                  <Route path="/newsDelete/:newsId" element={<DeletePost />} />
 
-                <Route path="/addCard" element={<CreateCard />} />
-                <Route path="/addExpense" element={<CreateExpense />} />
-                <Route path="/card/:cardId" element={<CardDetails cards={cards} />} />
-                <Route path="/cardDelete/:cardId" element={<DeleteCard />} />
-                <Route
-                  path="/card/:cardId/edit"
-                  element={<EditCard cards={cards} />}
-                />
-                <Route
-                  path="/news/:newsId/edit"
-                  element={<EditPost expense={expense} />}
-                />
-              </Routes>
+                  <Route path="/login" element={<Login />} />
+                  <Route path="/register" element={<Register />} />
+                  <Route path="/logout" element={<Logout />} />
+                  <Route path="/profile" element={<Profile />} />
+
+                  <Route path="/addCard" element={<CreateCard />} />
+                  <Route path="/addExpense" element={<CreateExpense />} />
+                  <Route path="/expenseDelete/:expenseId" element={<DeleteExpense />} />
+                  <Route path="/card/:cardId" element={<Suspense fallback={Spinner}><CardDetails cards={cards} /></Suspense>} />
+                  <Route path="/cardDelete/:cardId" element={<DeleteCard />} />
+                  <Route
+                    path="/card/:cardId/edit"
+                    element={<EditCard cards={cards} />}
+                  />
+                  <Route
+                    path="/news/:newsId/edit"
+                    element={<EditPost expense={expense} />}
+                  />
+                </Routes>
+              </ExpenseContext.Provider>
             </NewsPostContext.Provider>
           </CardContext.Provider>
         <Footer />
