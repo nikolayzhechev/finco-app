@@ -2227,3 +2227,9 @@ a.text-dark:hover, a.text-dark:focus {
 .owl-carousel button.owl-dot.active {
   background-color: #6C55F9;
 }
+
+.dropdown-select {
+  margin: 5px;
+  padding: 5px;
+  color: rgb(70, 70, 70);
+}

@@ -46,7 +46,7 @@ export const CreateExpense = ({ cards }) => {
                 <label htmlFor="paymentMethod">
                   <b>Payment method</b>
                 </label>
-                <select name="paymentMethod">{
+                <select name="paymentMethod" className="dropdown-select">{
                   cards.map(card => 
                       <option key={card.id} value={card.cardNumber}>{card.bank}: {card.type}</option>
                     )

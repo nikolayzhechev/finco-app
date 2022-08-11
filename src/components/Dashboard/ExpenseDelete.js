@@ -10,11 +10,14 @@ export const DeleteExpense = () => {
 
   useEffect(() => {
     deleteOneExpense(expenseId);
+  });
+
+  useEffect(() => {
     getAllExpenses()
-      .then((result) => {
-        expenseDel(result);
-      })
-      .then(navigate("/dashboard"));
+    .then((result) => {
+      expenseDel(result);
+    })
+    .then(navigate("/dashboard"));
   });
 
   return null;
