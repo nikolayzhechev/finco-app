@@ -5,6 +5,7 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 export const Header = () => {
   const [state, setState] = useState();
   const auth = getAuth();
+  const user = auth.currentUser;
   
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
@@ -72,12 +73,13 @@ export const Header = () => {
               </div>
             ) : (
               <div className="ml-auto">
+                <span>&nbsp;{user.email}&nbsp;&nbsp;</span>
                 <Link
                   to={"/dashboard"}
                   className="btn btn-outline rounded-pill"
                 >
                   Dashboard
-                </Link>
+                </Link>       
               </div>
             )}
           </div>

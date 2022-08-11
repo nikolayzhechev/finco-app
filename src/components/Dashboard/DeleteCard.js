@@ -12,7 +12,6 @@ export const DeleteCard = () => {
     deleteOneCard(cardId);
     getAllCards()
       .then((result) => {
-        console.log(result);
         cardDel(result);
       })
       .then(navigate("/dashboard"));

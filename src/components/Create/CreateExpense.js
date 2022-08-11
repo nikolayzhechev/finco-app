@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { addExpenseService } from "../../service/expenseService";
 import { ExpenseContext } from "../../context/ExpenseContext";
 
-export const CreateExpense = () => {
+export const CreateExpense = ({ cards }) => {
   const navigate = useNavigate();
   const { expenseHandler } = useContext(ExpenseContext);
 
@@ -46,12 +46,12 @@ export const CreateExpense = () => {
                 <label htmlFor="paymentMethod">
                   <b>Payment method</b>
                 </label>
-                <input
-                  type="text"
-                  placeholder="Method of Direct Payment"
-                  name="paymentMethod"
-                  className="form-control"
-                />
+                <select name="paymentMethod">{
+                  cards.map(card => 
+                      <option key={card.id} value={card.cardNumber}>{card.bank}: {card.type}</option>
+                    )
+                }
+                </select>
               </div>
               <div className="py-2">
                 <label htmlFor="amount">

@@ -36,6 +36,24 @@ function App() {
   const [expense, setExpense] = useState([]);
   const [post, setPost] = useState([]);
 
+  useEffect(() => {
+    cardService.getAllCards().then((result) => {
+      setCards(result);
+    });
+  }, []);
+
+  useEffect(() => {
+    expenseService.getAllExpenses().then((result) => {
+      setExpense(result);
+    });
+  }, []);
+
+  useEffect(() => {
+    newsService.getAllPosts().then((result) => {
+      setPost(result);
+    });
+  }, []);
+
   const cardAdd = (cardData) => {
     setCards(state => [
       ...state,
@@ -75,28 +93,23 @@ function App() {
     setExpense(data);
   };
 
-  useEffect(() => {
-    cardService.getAllCards().then((result) => {
-      setCards(result);
-    });
-  }, []);
+  const addLinkedExpense = (cardId) => {
+     setCards(state => {
+      const cardData = cards.find(item => item.id === cardId);
+      const data = expense.filter(item => item.paymentMethod === cardData.cardNumber);
+      cardData.linkedExpenses = data;
 
-  useEffect(() => {
-    expenseService.getAllExpenses().then((result) => {
-      setExpense(result);
+      return [
+         ...state.filter(x => x.id !== cardData.id),
+         cardData
+       ]
     });
-  }, []);
-
-  useEffect(() => {
-    newsService.getAllPosts().then((result) => {
-      setPost(result);
-    });
-  }, []);
+  };
 
   return (
       <div>
         <Header />
-          <CardContext.Provider value={{ cardAdd, cardEdit, cardDel }}>
+          <CardContext.Provider value={{ cardAdd, cardEdit, cardDel, addLinkedExpense, cards}}>
             <NewsPostContext.Provider value={{ newsAdd, newsEdit, newsDel }}>
               <ExpenseContext.Provider value={{ expenseHandler, expenseDel }}>
                 <Routes>
@@ -118,7 +131,7 @@ function App() {
                   <Route path="/profile" element={<Profile />} />
 
                   <Route path="/addCard" element={<CreateCard />} />
-                  <Route path="/addExpense" element={<CreateExpense />} />
+                  <Route path="/addExpense" element={<CreateExpense cards={cards} />} />
                   <Route path="/expenseDelete/:expenseId" element={<DeleteExpense />} />
                   <Route path="/card/:cardId" element={<Suspense fallback={Spinner}><CardDetails cards={cards} /></Suspense>} />
                   <Route path="/cardDelete/:cardId" element={<DeleteCard />} />

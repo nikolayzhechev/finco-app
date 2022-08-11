@@ -11,7 +11,8 @@ export const ExpenseItem = ({ expense }) => {
           <h5>{expense.type}</h5>
           <p>
             {expense.period}
-            <br></br>Avarage: <strong>{expense.amount}</strong>
+            <br></br>Avarage: <strong>{expense.amount}</strong><br></br>
+            Payed with: {expense.paymentMethod}
             <br></br>
             <Link to={`/expenseDelete/${expense.id}`}>Remove Item</Link>
           </p>

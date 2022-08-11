@@ -1,4 +1,6 @@
+import { useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
+import { CardContext } from "../../context/CardContext";
 
 export const CardItem = ({ card }) => {
   return (
