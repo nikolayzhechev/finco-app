@@ -26,14 +26,14 @@ export const Register = () => {
     setErrMsg(null);
 
     authService.register(email, password)
-		  .then((authData) => {
+		  .then(() => {
       		navigate("/");
     	}).catch(err => {
         if(err.message.includes('invalid-email')){
-          const err = 'Invalid email adress.';
+          const err = 'Invalid email address.';
           setErrMsg(err);
         } else {
-          const err = 'An error occured, please try again.';
+          const err = 'An error occurred, please try again.';
           setErrMsg(err);
         }
       });
