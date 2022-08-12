@@ -9,12 +9,18 @@ export const NewsDetails = () => {
 
     const auth = getAuth();
     const user = auth.currentUser;
-    const isAuth = user.uid === currentPost.uid;
+    let isAuth = false;
+    
+    if(user){
+      isAuth = user.uid === currentPost.uid;
+    }
 
   useEffect(() => {
         newsService.getOnePost(newsId)
             .then(result => {
                 setCurrentPost(result);
+            }).catch(err => {
+              console.log(err);
             });
      }, []);
 
@@ -24,12 +30,12 @@ export const NewsDetails = () => {
         <div className="row">
           <div className="col-lg-6 py-3 wow fadeInLeft">
             <h2 className="title-section">
-              {currentPost.title}
+              {currentPost && currentPost.title}
             </h2>
-            <h5>{currentPost.author}</h5>
+            <h5>{currentPost && currentPost.author}</h5>
             <div className="divider" />
             <p className="mb-5">
-            {currentPost.description}
+            {currentPost && currentPost.description}
             </p>
               {
               isAuth &&

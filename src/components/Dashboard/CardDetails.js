@@ -25,7 +25,9 @@ export const CardDetails = () => {
 
   useEffect(() => {
     const item = cards.find(x => x.id === cardId);
-    setExpenseItem(item.linkedExpenses);
+    if(item){
+      setExpenseItem(item.linkedExpenses);
+    }
   }, []);
 
   return (

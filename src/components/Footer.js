@@ -83,7 +83,7 @@ export const Footer = () => {
         <div className="row">
           <div className="col-sm-6 py-2">
             <p id="copyright">
-              © 2022 <a href="https://macodeid.com/">finco.</a>. All rights
+              © 2022 <a href="https://macodeid.com/">finco.</a> All rights
               reserved
             </p>
           </div>

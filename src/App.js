@@ -30,6 +30,7 @@ import { CardContext } from "./context/CardContext";
 import { NewsPostContext } from "./context/NewsPostContext";
 import { ExpenseContext } from "./context/ExpenseContext";
 import { Spinner } from "./components/Spinner";
+import { NotFound } from "./components/NotFound";
 
 function App() {
   const [cards, setCards] = useState([]);
@@ -90,7 +91,9 @@ function App() {
      setCards(state => {
       const cardData = cards.find(item => item.id === cardId);
       const data = expense.filter(item => item.paymentMethod === cardData.cardNumber);
-      cardData.linkedExpenses = data;
+      if(data){
+        cardData.linkedExpenses = data;
+      }
 
       return [
          ...state.filter(x => x.id !== cardData.id),
@@ -136,6 +139,7 @@ function App() {
                     path="/news/:newsId/edit"
                     element={<EditPost expense={expense} />}
                   />
+                  <Route path="*" element={<NotFound />}/>
                 </Routes>
               </ExpenseContext.Provider>
             </NewsPostContext.Provider>
