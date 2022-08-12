@@ -19,6 +19,8 @@ export const CreateNewsPost = () => {
         addNewsService(newsData)
           .then(result => {
             newsAdd(result);
+          }).catch(err => {
+            console.log(err);
           });
 
         navigate('/news');

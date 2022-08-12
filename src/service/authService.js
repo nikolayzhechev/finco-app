@@ -36,6 +36,7 @@ export const login = async (email, password) => {
     const errorCode = error.errorCode;
     const errorMessage = error.meesage;
     console.log(errorCode, errorMessage);
+    return error;
   }
 };
 

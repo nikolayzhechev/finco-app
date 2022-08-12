@@ -11,7 +11,6 @@ import { Register } from "./components/Users/Register";
 import { Logout } from "./components/Users/Logout";
 import { Footer } from "./components/Footer";
 import { Profile } from "./components/Users/Profile";
-
 import { CreateCard } from "./components/Create/CreateCard";
 import { CreateExpense } from "./components/Create/CreateExpense";
 import { CreateNewsPost } from "./components/Create/CreateNewsPost";
@@ -26,6 +25,7 @@ import { DeleteExpense } from "./components/Dashboard/ExpenseDelete";
 import * as cardService from "./service/cardService";
 import * as expenseService from "./service/expenseService";
 import * as newsService from "./service/newsService";
+
 import { CardContext } from "./context/CardContext";
 import { NewsPostContext } from "./context/NewsPostContext";
 import { ExpenseContext } from "./context/ExpenseContext";
@@ -53,12 +53,9 @@ function App() {
       setPost(result);
     });
   }, []);
-
+// CARD
   const cardAdd = (cardData) => {
-    setCards(state => [
-      ...state,
-      cardData,
-      ]);
+    setCards(state => [ ...state, cardData ]);
   };
 
   const cardEdit = (cardId, cardData) => {
@@ -66,15 +63,11 @@ function App() {
   };
 
   const cardDel = (remainingData) => {
-    console.log(remainingData);
     setCards(remainingData);
   };
-
+// NEWS
   const newsAdd = (newsData) => {
-    setPost(state => [
-      ...state,
-      newsData
-    ]);
+    setPost(state => [ ...state, newsData ]);
   };
 
   const newsDel = (remainingData) => {
@@ -84,7 +77,7 @@ function App() {
   const newsEdit = (newsId, newsData) => {
     setPost(state => state.map(x => x.id === newsId ? newsData : x))
   };
-
+// EXPENSE
   const expenseHandler = (data) => {
     setExpense(state => [...state, data]);
   };
@@ -102,7 +95,7 @@ function App() {
       return [
          ...state.filter(x => x.id !== cardData.id),
          cardData
-       ]
+       ];
     });
   };
 

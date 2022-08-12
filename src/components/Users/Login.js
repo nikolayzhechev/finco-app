@@ -1,9 +1,10 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import * as authService from "../../service/authService";
+import * as   authService from "../../service/authService";
 
 export const Login = () => {
   const navigate = useNavigate();
+  const [errMsg, setErrMsg] = useState(null);
 
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -17,9 +18,15 @@ export const Login = () => {
     const password = formData.get("psw");
 
     authService.login(email, password)
-		.then((authData) => {
-    	  navigate("/");
-    	});
+		  .then((res) => { 
+        if(res.user.email){
+          navigate("/");
+        }
+    	})
+      .catch(err => {
+        setErrMsg(err);
+        throw new Error('Invalid username or password.');
+      });
   };
 
   return (
@@ -35,6 +42,12 @@ export const Login = () => {
           <div className="col-lg-6 py-3">
             <div className="subhead"></div>
             <h2 className="title-section">Log in to your account.</h2>
+            {
+              errMsg && 
+                <div>
+                  <strong>Invalid username or password.</strong>
+                </div>
+            }
             <div className="divider" />
             <form onSubmit={onSubmit}>
               <label htmlFor="psw">

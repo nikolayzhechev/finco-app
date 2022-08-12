@@ -15,6 +15,8 @@ export const CreateCard = () => {
     addCardService(cardData)
         .then(result => {
           cardAdd(result);
+        }).catch(err => {
+          console.log(err);
         });
     
     navigate("/dashboard");

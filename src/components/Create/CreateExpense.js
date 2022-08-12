@@ -15,6 +15,8 @@ export const CreateExpense = ({ cards }) => {
     addExpenseService(expenseData)
       .then(result => {
         expenseHandler(result);
+      }).catch(err => {
+        console.log(err);
       });
 
     navigate('/dashboard');

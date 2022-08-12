@@ -41,11 +41,16 @@ export const CardDetails = () => {
               Card Number: <strong>{currentCard.cardNumber}</strong> <br></br>
               Valid Thru: <strong>{currentCard.valid}</strong> <br></br>
               Expenses:&nbsp;
-                  { expenseItem.length > 0 ?
+                  { 
+                    expenseItem.length > 0
+                    ?
                      expenseItem.map((item) => (  
-                      <span><br></br><strong>{item.type}</strong>:&nbsp;{item.amount}</span>
+                       <span>
+                          <br></br>
+                          <strong>{item.type}</strong>:&nbsp;{item.amount}
+                       </span>
                      ))
-                     :
+                    :
                      <span>No expenses linked</span>
                   }
             </p>

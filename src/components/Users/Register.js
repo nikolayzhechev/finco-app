@@ -1,9 +1,10 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import * as authService from "../../service/authService";
 
 export const Register = () => {
   const navigate = useNavigate();
+  const [errMsg, setErrMsg] = useState(null);
 
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -18,13 +19,24 @@ export const Register = () => {
     const confirmPassword = formData.get("repeat-psw");
 
     if (password !== confirmPassword) {
+      const err = 'Passwords don\'t match.'
+      setErrMsg(err);
       return;
     }
+    setErrMsg(null);
 
     authService.register(email, password)
-		.then((authData) => {
+		  .then((authData) => {
       		navigate("/");
-    	});
+    	}).catch(err => {
+        if(err.message.includes('invalid-email')){
+          const err = 'Invalid email adress.';
+          setErrMsg(err);
+        } else {
+          const err = 'An error occured, please try again.';
+          setErrMsg(err);
+        }
+      });
   };
 
   return (
@@ -40,6 +52,12 @@ export const Register = () => {
           <div className="col-lg-6 py-3">
             <div className="subhead"></div>
             <h2 className="title-section">Create an account.</h2>
+            {
+              errMsg && 
+              <div>
+                <strong>{errMsg}</strong>
+              </div>
+            }
             <div className="divider" />
             <form onSubmit={onSubmit}>
               <label htmlFor="email">
