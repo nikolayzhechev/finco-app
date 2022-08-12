@@ -1,7 +1,7 @@
-<p align="center">
+<p align="left">
   <a href="https://finco-app-3c312.web.app/">
-    <img  src=""
-      width="284" border="0" alt="finco.">
+    <img  src="/public/images/finco-logo.png"
+      width="184" border="0" alt="finco.">
   </a>
 </p>
 
@@ -32,8 +32,6 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 Direct link can be opened for project viewing: https://finco-app-3c312.firebaseapp.com/
 
 ## App Info:
-
-finco. is a finance app. It has functionality related to a personal wallet, financial tools and expense trackers.
 
 finco. is a finance app. It has functionality related to a personal wallet, financial tools and expense trackers.
 
