@@ -1,5 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import { useEffect, useState, Suspense } from "react";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 import { Header } from "./components/Header";
 import { Home } from "./components/Home";
@@ -36,6 +37,18 @@ function App() {
   const [cards, setCards] = useState([]);
   const [expense, setExpense] = useState([]);
   const [post, setPost] = useState([]);
+  const [usersState, setUserState] = useState(null);
+
+  const auth = getAuth();
+  const user = auth.currentUser;
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setUserState(user);
+      }
+    });
+  }, []);
 
   useEffect(() => {
     cardService.getAllCards().then((result) => {
@@ -111,10 +124,12 @@ function App() {
                 <Routes>
                   <Route path="/" element={<Home />} />
                   <Route path="/about" element={<About />} />
-                  <Route
-                    path="/dashboard"
-                    element={<Dashboard cards={cards} expense={expense} />}
-                  />
+                  {usersState &&
+                    <Route
+                      path="/dashboard"
+                      element={<Dashboard cards={cards} expense={expense} />}
+                    />
+                  }
 
                   <Route path="/news" element={<Suspense fallback={Spinner}><News post={post} /></Suspense>} />
                   <Route path="/newPost" element={<CreateNewsPost />} />
