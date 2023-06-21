@@ -46,3 +46,15 @@ The same can be applied to the News section. Unlike the Dashboard, the News sect
 Authentication and authorization are also implemented. So, you can `edit` and `delete` only if you are authorized to do so.
 
 Since the authentication is based on the Firebase service, please feel free to create a new user from the Sign-Up button and use it for testing.
+
+
+![img](https://github.com/nikolayzhechev/finco-app/blob/main/public/images/Preview_1.PNG)
+
+
+![img](https://github.com/nikolayzhechev/finco-app/blob/main/public/images/Preview_2.PNG)
+
+
+![img](https://github.com/nikolayzhechev/finco-app/blob/main/public/images/Preview_3.PNG)
+
+
+![img](https://github.com/nikolayzhechev/finco-app/blob/main/public/images/Preview_4.PNG)
